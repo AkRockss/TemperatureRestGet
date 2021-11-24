@@ -18,13 +18,15 @@ namespace TemperatureRestGet.Managers
       public IEnumerable<Sensor> GetAll(string temperature)
         {
             if (string.IsNullOrWhiteSpace(temperature)) 
-            {
-                IEnumerable<Sensor> sensors = from sensor in _context.SensorData
-                                              where sensor.Temperature.Equals(temperature)
-                                              select sensor;
-                return sensors;
+            {    
+                return _context.SensorData.ToList();
             }
-            return _context.SensorData.ToList();
+
+            IEnumerable<Sensor> sensors = from sensor in _context.SensorData
+                                          where sensor.Temperature.Contains(temperature)
+                                          select sensor;
+
+            return sensors;
         }
 
     }
