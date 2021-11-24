@@ -7,24 +7,24 @@ namespace TemperatureRestGet.Managers
 {
     public class TemperatureManager 
     {
-        private SensorContext _context;
+        private SensorContextGet _context;
         private static int _nextId = 1;
 
-        public TemperatureManager(SensorContext context)
+        public TemperatureManager(SensorContextGet context)
         {
             _context = context;
         }
 
       public IEnumerable<Sensor> GetAll(string temperature)
         {
-            if (string.IsNullOrWhiteSpace(temperature))
+            if (string.IsNullOrWhiteSpace(temperature)) 
             {
-                return _context.Table.ToList();
+                IEnumerable<Sensor> sensors = from sensor in _context.SensorData
+                                              where sensor.Temperature.Equals(temperature)
+                                              select sensor;
+                return sensors;
             }
-            IEnumerable<Sensor> sensors = from sensor in _context.Table
-                                          where sensor.Temperature.Equals(temperature)
-                                          select sensor;
-            return sensors;
+            return _context.SensorData.ToList();
         }
 
     }

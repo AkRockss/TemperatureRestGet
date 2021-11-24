@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using SensorRestDBPoster.Context;
 using SensorRestDBPoster.Models;
 using TemperatureRestGet.Managers;
+using TemperatureRestGet.Context;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,7 +14,7 @@ namespace TemperatureRestGet.Controllers
     {
         private readonly TemperatureManager _manager;
 
-        public TemperatureController(SensorContext context)
+        public TemperatureController(SensorContextGet context)
         {
             _manager = new TemperatureManager(context);
         }
