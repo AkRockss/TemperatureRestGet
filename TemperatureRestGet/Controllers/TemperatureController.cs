@@ -21,9 +21,9 @@ namespace TemperatureRestGet.Controllers
 
         // GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<Sensor> Get([FromQuery] string temperature/*, [FromQuery] string sort_by*/)
+        public IEnumerable<Sensor> Get()
         {
-            return _manager.GetAll(temperature/*, sort_by*/);
+            return _manager.GetAll();
         }
 
         // GET api/<ValuesController>/5

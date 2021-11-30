@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using SensorRestDBPoster.Models;
+using System.Collections.Generic;
 using System.Linq;
-using SensorRestDBPoster.Models;
 using TemperatureRestGet.Context;
 
 namespace TemperatureRestGet.Managers
@@ -15,35 +15,13 @@ namespace TemperatureRestGet.Managers
             _context = context;
         }
 
-        public IEnumerable<Sensor> GetAll(string temperature/*, string sortBy = null*/)
+        public IEnumerable<Sensor> GetAll()
         {
-            if (string.IsNullOrWhiteSpace(temperature))
-            {
-                return _context.SensorData.ToList();
-            }
-
-            IEnumerable<Sensor> sensors = from sensor in _context.SensorData
-                                          where sensor.Temperature.Contains(temperature)
-                                          orderby sensor.Date ascending
-                                          select sensor;
-
-
-            //List<Sensor> ath = new List<Sensor>(sensors);
-
-            //if (sortBy != null)
-            //{
-            //    switch (sortBy.ToLower())
-            //    {
-            //        case "temperature":
-            //            ath = ath.OrderBy(ath => ath.Temperature).ToList();
-            //            break;
-
-
-            //    }
-
-
-            //}
-
+            IEnumerable<Sensor> sensors = (from sensor in _context.SensorData
+                                           where sensor.Temperature.Contains(string.Empty)
+                                           orderby sensor.Date descending
+                                           select sensor).Take(5);
+ 
             return sensors;
         }
     }
