@@ -19,20 +19,21 @@ namespace TemperatureRestGet.Controllers
             _manager = new TemperatureManager(context);
         }
 
-        // GET: api/<ValuesController>
+        //GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<Sensor> Get()
+        public IEnumerable<Sensor> GetFive()
+        {
+            return _manager.GetFive();
+        }
+
+        //GET api/<ValuesController>/5
+        [Route("/GetAll")]
+        [HttpGet]
+        public IEnumerable<Sensor> GetAll()
         {
             return _manager.GetAll();
         }
 
-        // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        
-    }
+}
 }

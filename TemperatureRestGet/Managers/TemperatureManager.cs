@@ -8,22 +8,38 @@ namespace TemperatureRestGet.Managers
     public class TemperatureManager
     {
         private SensorContextGet _context;
-       
+
 
         public TemperatureManager(SensorContextGet context)
         {
             _context = context;
         }
 
-        public IEnumerable<Sensor> GetAll()
+        public IEnumerable<Sensor> GetFive()
         {
             IEnumerable<Sensor> sensors = (from sensor in _context.SensorData
-                                           where sensor.Temperature.Contains(string.Empty)
                                            orderby sensor.Date descending
                                            select sensor).Take(5);
- 
+
             return sensors;
+
         }
+
+        public IEnumerable<Sensor> GetAll()
+        {
+            IEnumerable<Sensor> sensors1 = from sensor in _context.SensorData
+                                            orderby sensor.Date descending
+                                            select sensor;
+
+
+            return sensors1;
+
+
+        }
+
+
     }
 }
+
+
 
