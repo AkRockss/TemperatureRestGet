@@ -25,6 +25,18 @@ namespace TemperatureRestGet.Managers
 
         }
 
+        public IEnumerable<Sensor> GetAverage()
+        {
+            IEnumerable<Sensor> sensors = (from sensor in _context.SensorData
+                orderby sensor.Date descending
+                select sensor).Take(144);
+
+            return sensors;
+
+        }
+
+
+
         public IEnumerable<Sensor> GetAll()
         {
             IEnumerable<Sensor> sensors1 = from sensor in _context.SensorData
