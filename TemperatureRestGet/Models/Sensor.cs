@@ -5,7 +5,7 @@ namespace SensorRestDBPoster.Models
 {
     /// <summary>
     /// The Sensor Class. Has an int Id (internally set in the Database, don't try and set it), string Temperature, string Date, string Humidity and string RoomId.
-    /// </summary>
+    /// </summary> 
     public class Sensor
     {
         [Key]

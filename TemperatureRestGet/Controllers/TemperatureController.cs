@@ -34,6 +34,14 @@ namespace TemperatureRestGet.Controllers
             return _manager.GetAll();
         }
 
+        [Route("/GetAverage")]
+        [HttpGet]
+        public IEnumerable<Sensor> GetAve()
+        {
+            return _manager.GetAverage();
+        }
 
-}
+
+
+    }
 }
