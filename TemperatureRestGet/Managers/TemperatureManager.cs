@@ -15,6 +15,10 @@ namespace TemperatureRestGet.Managers
             _context = context;
         }
 
+        public TemperatureManager()
+        {
+        }
+
         public IEnumerable<Sensor> GetFive()
         {
             IEnumerable<Sensor> sensors = (from sensor in _context.SensorData
