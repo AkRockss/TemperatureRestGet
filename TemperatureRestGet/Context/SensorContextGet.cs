@@ -3,6 +3,7 @@ using SensorRestDBPoster.Models;
 
 namespace TemperatureRestGet.Context
 {
+    // Initializes Dbset with Sensor
     public class SensorContextGet : DbContext
     {
         public SensorContextGet(DbContextOptions<SensorContextGet> options) : base(options) { }
