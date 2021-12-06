@@ -16,12 +16,12 @@ namespace TemperatureRestGet.Managers
             _context = context;
         }
 
-        //Method gets 5 objects from Database
-        public IEnumerable<Sensor> GetFive()
+        //Method gets 1 objects from Database
+        public IEnumerable<Sensor> GetOne()
         {
             IEnumerable<Sensor> sensors = (from sensor in _context.SensorData
                                            orderby sensor.Date descending
-                                           select sensor).Take(5);
+                                           select sensor).Take(1);
 
             return sensors;
 
@@ -32,7 +32,7 @@ namespace TemperatureRestGet.Managers
         {
             IEnumerable<Sensor> sensors = (from sensor in _context.SensorData
                 orderby sensor.Date descending
-                select sensor).Take(144);
+                select sensor).Take(1008);
 
             return sensors;
 
